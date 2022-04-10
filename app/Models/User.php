@@ -20,17 +20,32 @@ class User extends Authenticatable
     public function bookmark()
     {
         return $this->hasMany('App\Bookmark');
-    } 
-    
-  
+    }
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'gmail_id',
+        'fb_id',
+        'role',
+        'activated',
+        'status',
+    ];
+
+
+
+
+
     protected $guarded = [];
- 
-   
-      
+
+
+
     protected $hidden = [
         'password',
         'remember_token',
-        'fb_id',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -40,5 +55,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $appends = [
+        'profile_photo_url',
     ];
 }

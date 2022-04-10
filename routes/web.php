@@ -34,6 +34,5 @@ Route::controller(FacebookController::class)->group(function(){
 });
 
 
- 
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);

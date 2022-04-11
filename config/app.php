@@ -169,6 +169,8 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class, // If using Jetstream
 
         /*
          * Application Service Providers...

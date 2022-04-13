@@ -15,15 +15,11 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->nullable();
+            $table->text('name');
             $table->text('content')->nullable();
             $table->text('type')->nullable();
             $table->decimal('price')->nullable();
             $table->timestamps();
-
-            
-            $table->foreign('profile_id')->references('id')->on('profiles');
-            $table->unsignedBigInteger('profile_id');
 
         });
     }

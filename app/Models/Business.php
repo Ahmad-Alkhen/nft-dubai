@@ -12,7 +12,7 @@ class Business extends Model
     protected $guarded = [];
 
 
-    public function Profile()
+    public function profile()
     {
         return $this->belongsTo('App\Profile');
     }

@@ -20,6 +20,7 @@ class User extends Authenticatable
     public function bookmark()
     {
         return $this->hasMany('App\Bookmark');
+<<<<<<< HEAD
     }
 
     protected $fillable = [
@@ -37,6 +38,19 @@ class User extends Authenticatable
 
 
 
+=======
+    } 
+
+    public function employee()
+    {
+        return $this->hasOne('App\Employee');
+    } 
+
+
+     
+    
+  
+>>>>>>> 592ceb2f0f859e266da153a0cda95b8767137194
     protected $guarded = [];
 
 

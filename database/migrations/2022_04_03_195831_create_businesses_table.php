@@ -16,10 +16,14 @@ return new class extends Migration
             $table->integer('country_code')->nullable();
             $table->integer('phone')->nullable();
             $table->string('email')->nullable();
+            $table->boolean('display_contact')->default(false);
+            $table->boolean('display_company')->default(false);
+
             $table->string('role')->nullable();
             $table->date('establish_date')->nullable();
             $table->text('interest')->nullable();
             $table->string('location')->nullable();
+            // $table->string('indsutries')->nullable();
             
             $table->integer('employees_number')->nullable();
             $table->string('entity_type')->nullable();
@@ -33,14 +37,12 @@ return new class extends Migration
             $table->text('assets')->nullable();
             $table->text('Phisycal_assets_value')->nullable();
       
-            $table->integer('receiving_quotations')->nullable();
-            $table->string('plan')->nullable();
+            $table->boolean('receiving_quotations')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('user_id');
+            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->unsignedBigInteger('profile_id');
 
-            $table->text('industry')->nullable();
 
 
             // $table->text('photo')->nullable();
@@ -49,11 +51,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+     
     public function down()
     {
         Schema::dropIfExists('businesses');

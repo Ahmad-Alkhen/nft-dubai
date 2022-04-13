@@ -10,4 +10,8 @@ class File extends Model
     protected $guarded = [];
 
     use HasFactory;
+    public function Profile()
+    {
+        return $this->belongsTo('App\Profile');
+    }
 }

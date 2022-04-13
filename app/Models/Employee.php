@@ -10,4 +10,9 @@ class Employee extends Model
     protected $guarded = [];
 
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

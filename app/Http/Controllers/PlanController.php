@@ -7,35 +7,30 @@ use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
-    }
+        $plans = Currency::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        return view('plans.index', compact('plans'));
+    }
+ 
     public function create()
     {
-        //
+        return view('plans.create');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-        //
+        $request->validate([
+         
+        ]);
+
+       
+        return redirect()->route('plans.index')
+                        ->with('success','item created successfully.');
     }
 
     /**
@@ -46,40 +41,33 @@ class PlanController extends Controller
      */
     public function show(Plan $plan)
     {
-        //
+        return view('plans.show', compact('plan'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit(Plan $plan)
     {
-        //
-    }
+        return view('plans.edit', compact('plan'));
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
+    }
+ 
     public function update(Request $request, Plan $plan)
     {
-        //
+        $currency->update($request->all());
+
+        return back()->with('message', 'item updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Plan $plan)
     {
-        //
+        $plan->delete();
+
+        return back()->with('message', 'item deleted successfully');
     }
 }
+
+
+
+ 

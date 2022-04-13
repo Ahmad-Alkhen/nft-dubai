@@ -166,6 +166,12 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -180,15 +186,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-<<<<<<< HEAD
-=======
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
-        App\Providers\JetstreamServiceProvider::class,
->>>>>>> 592ceb2f0f859e266da153a0cda95b8767137194
-
     ],
 
     /*

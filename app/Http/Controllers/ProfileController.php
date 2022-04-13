@@ -49,7 +49,7 @@ class ProfileController extends Controller
     public function show(Profile $profile)
     {
         //
-       
+
     }
 
     /**
@@ -89,5 +89,15 @@ class ProfileController extends Controller
         $profile->delete();
 
         return back()->with('message', 'Profile deleted successfully');
+    }
+
+    public function profileActivation()
+    {
+
+    }
+
+    public function profileStatus()
+    {
+
     }
 }

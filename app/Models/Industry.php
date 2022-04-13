@@ -10,9 +10,10 @@ class Industry extends Model
     protected $guarded = [];
 
     use HasFactory;
-    public function profile()
+ 
+    public function industryProfile()
     {
-        return $this->belongsTo('App\Profile');
+        return $this->hasMany('App\IndustryProfile');
     }
 
 }

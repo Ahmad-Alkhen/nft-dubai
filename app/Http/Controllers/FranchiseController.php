@@ -10,21 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class FranchiseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('franchises.create');
@@ -34,40 +26,46 @@ class FranchiseController extends Controller
     
     public function store(Request $request)
     {
- 
+      // 1. Saving Profile table Details
+        $profile = new Profile;
+        $profile->type =  'franchise';
+        $profile->user_id =   auth::user()->id;
+  
+     if( !$profile->save())
+    {
+
+    }
+    else
+    {
+        //  Saving Franchise table Details
+
         $franchise = new Franchise;
         $franchise->name = $request->name;
         $franchise->email = $request->email;
-        $franchise->user_id =   auth::user()->id;
         $franchise->phone = $request->phone;
         $franchise->designation = $request->designation;
+        $franchise->country_code = $request->country_code;
         $franchise->brand_name = $request->brand_name;
-        $franchise->website = $request->website;
         $franchise->offering = $request->offering;
-        $franchise->industry = $request->industry;
         $franchise->brand_description = $request->brand_description;
         $franchise->all_products_services = $request->all_products_services;
         $franchise->brand_start_year = $request->brand_start_year;
         $franchise->brand_location = $request->brand_location;
-        $franchise->brand_latitude = $request->brand_latitude;
-        $franchise->brand_longitude = $request->brand_longitude;
+        $franchise->existing_outlets_count = $request->existing_outlets_count;
         $franchise->expectation = $request->expectation;
         $franchise->support = $request->support;
-        $franchise->expand_location = $request->expand_location;
-        $franchise->franchise_format_count = $request->franchise_format_count;
-        $franchise->brand_logo = $request->brand_logo;
-        $franchise->store_photo = $request->store_photo;
+        $franchise->expand_locations = $request->expand_location;
         $franchise->procedure = $request->procedure;
-        $franchise->brochure = $request->brochure;
+        $franchise->franchise_format_count = $request->franchise_format_count;
         $franchise->business_proof = $request->business_proof;
-        $franchise->current_plan_price = $request->current_plan_price;
-        $franchise->current_plan_title = $request->current_plan_title;
+        $franchise->profile_id = $profile->id;
+      }
+
 
      
      if( $franchise->save())
      {
-        // dd($franchise);
-
+        //"franchise_format_count"
         $format = new Format;
         $format->franchise_id = $franchise->id;
         $format->name = $request->format_name;
@@ -84,10 +82,122 @@ class FranchiseController extends Controller
         $format->save();
         return back()->with('message', 'item stored successfully');
 
+        $franchise->format()->save($format);
+      
      }
 
      
+
+            // 3.Saving Industry   Details (Loop)
+
+            
+            //  $industryProfilesModels = [];
+            // foreach ($request->industryProfiles as $industryProfile) {
+            //     $industryProfilesModels[] = new IndustryProfile($industryProfile);
+            // }
+            
+            // $profile->industryProfiles()->saveMany($skillModels);
+ 
+            if ($request->filled('industry_id'))
+            {
+            $industryProfile = new IndustryProfile;
+            $industryProfile->profile_id=$profile->id;
+            $industryProfile->industry_id=$request->industry_id;
+            $profile->industryProfiles()->save($industryProfile);
+            }
+
+                $skillModels = [];
+            foreach ($request->skills as $skill) {
+                $skillsModels[] = new Skill($skill);
+            }
+            
+            $user->skills()->saveMany($skillModels);
+
+
+            
+            // // 4.Saving File   Details
+             
+
+            
+            //     $fileModels = [];
+            // foreach ($request->files as $file) {
+            //     $skillsModels[] = new File($skill);
+            // }
+            
+            // $user->skills()->saveMany($skillModels);
+
+
+
+            // $request->validate([
+            //     'file' => 'required|mimes:csv,txt,xlx,xls,pdf,png|max:2048'
+            //     ]);
+            // $file = new File;
+            // if($request->file() && $request->filled('fileName')) {
+            //     $fileName = $profile->name.$request->type.'_'.$req->file->getClientOriginalName();
+            //     $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+            //     $file->name =   $fileName;
+            //     $file->type =   $request->type;
+            //     $file->path = '/storage/' . $filePath;
+            // return back()
+            // ->with('success','File has been uploaded.')
+            // ->with('file', $fileName);
+
+            // $profile->files()->save($file);
+
+            // 5.Saving Social Media   Details (validation)
+            $socialmedia = new Socialmedia;
+            $socialmedia->website = $request->website;
+            $socialmedia->instagram = $request->instagram;
+            $socialmedia->linkedin = $request->linkedin;
+            $socialmedia->google = $request->google;
+            $socialmedia->facebook = $request->facebook;
+            $socialmedia->other = $request->other;
+            $profile->socialmedia()->save($socialmedia);
+
+            // // 6.Saving    Profileplan    Details
+
+               
+            //     $fileModels = [];
+            // foreach ($request->files as $file) {
+            //     $skillsModels[] = new File($skill);
+            // }
+            
+            // $user->skills()->saveMany($skillModels);
+
+
+            if ($request->filled('plan_id'))
+            {
+            $profilePlan = new ProfilePlan;
+            $profilePlan->profile_id = $profile->id;
+            $profilePlan->plan_id = $request->plan_id;
+            $profile->profilePlans()->save($profilePlan);
+            }
+        
+     
+     
+
+        
+
+    //         $myItems = [
+    //             ['title'=>'HD Topi','description'=>'It solution stuff'],
+    //             ['title'=>'HD Topi 2','description'=>'It solution stuff 2'],
+    //             ['title'=>'HD Topi 3','description'=>'It solution stuff 3']
+    //         ];
     
+    
+    // DB::table("items")->insert($myItems);
+
+// for()
+// {
+//     path?
+//     $profile->files()->saveMany([
+//         ['name' => 'Comment 1'],
+//         ['file_name' => 'Comment 2'],
+//         ['file_name' => 'Comment 2'],
+//       ]);
+// }
+     
+     
  
     }
 
@@ -109,12 +219,7 @@ class FranchiseController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Franchise  $franchise
-     * @return \Illuminate\Http\Response
-     */
+  
     public function destroy(Franchise $franchise)
     {
         //

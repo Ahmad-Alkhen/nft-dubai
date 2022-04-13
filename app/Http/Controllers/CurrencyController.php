@@ -7,79 +7,61 @@ use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+     
     public function index()
     {
-        //
+        $currencies = Currency::all();
+
+        return view('currencies.index', compact('currencies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
-        //
+        return view('currencies.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'short_name' => 'required|max:20',
+            
+        ]);
+      
+        Currency::create($request->all());
+        return redirect()->route('currencies.index')
+                        ->with('success','item created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Currency $currency)
     {
-        //
+   return view('currencies.show', compact('currency'));
+       
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Currency $currency)
     {
-        //
+    return view('currencies.edit', compact('currency'));
+         
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Currency $currency)
     {
-        //
-    }
+        $currency->update($request->all());
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Currency  $currency
-     * @return \Illuminate\Http\Response
-     */
+        return back()->with('message', 'item updated successfully');
+    }
+ 
     public function destroy(Currency $currency)
     {
-        //
+        $currency->delete();
+
+        return back()->with('message', 'item deleted successfully');
     }
 }
+
+

@@ -21,6 +21,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Bookmark');
     } 
+
+    public function employee()
+    {
+        return $this->hasOne('App\Employee');
+    } 
+
+
+     
     
   
     protected $guarded = [];

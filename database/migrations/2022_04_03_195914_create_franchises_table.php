@@ -33,15 +33,14 @@ return new class extends Migration
             $table->text('procedure')->nullable();
             $table->integer('franchise_format_count')->nullable();
             $table->string('expand_locations')->nullable();
+            // $table->string('indsutries')->nullable();
            
           
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('user_id');
-
-            // $table->text('industry')->nullable();
-            // $table->text('expand_location')->nullable();
+ 
+            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->unsignedBigInteger('profile_id');
+         
 
             // $table->string('current_plan_title')->nullable();
             // $table->decimal('current_plan_price', $precision = 10, $scale = 2)->nullable();
@@ -62,40 +61,5 @@ return new class extends Migration
 };
 
 
-
-  //     $table->id();
-        //     $table->string('user_name')->nullable();
-        //     $table->string('email')->nullable();
-        //     $table->string('profile_name')->nullable();
-        //     $table->string('role')->nullable();
-        //     $table->text('interest')->nullable();
-        //     $table->date('Establish_date')->nullable();
-        //     $table->text('Industry')->nullable();
-        //     $table->text('Location')->nullable();
-        //     $table->integer('employees_number')->nullable();
-        //     $table->string('entity_type')->nullable();
-        //     $table->string('description')->nullable();
-        //     $table->text('highlights')->nullable();
-        //     $table->text('facility_details')->nullable();
-        //     $table->integer('Avg_monthly_sales')->nullable();
-        //     $table->integer('year_sales')->nullable();
-        //     $table->integer('EBITDA')->nullable();
-        //     $table->text('assets')->nullable();
-        //     $table->text('Phisycal_assets _value')->nullable();
-        //     $table->text('photo')->nullable();
-        //     $table->text('document')->nullable();
-        //     $table->text('proof')->nullable();
-        //     $table->boolean('receiving_quotations')->nullable();
-        //     $table->string('plan')->nullable();
-           
-        //     $table->timestamps();
-    
-        //     $table->foreign('user_id')->references('id')->on('users')
  
-        // ->onDelete('cascade');
- 
-        // });
-
- 
-
  

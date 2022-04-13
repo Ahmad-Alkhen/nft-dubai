@@ -19,10 +19,10 @@ class BusinessSeeder extends Seeder
         $data = [
 
             ["id"=> "1", "name"=>"NFT Dubai","company_name" => "","country_code" => "+971","phone"=>"0502003001", "email"=>"nftdubai@gmail.com","role" => "","establish_date" => "",
-            "interest" => "Investing Business", "location" => "",
+            "interest" => "Investing Business", "location" => "", "employees_number" => "", "entity_type" => "","description"=>"", "highlights" => "", "facility_details" => "",
             "investor_role"=>"Individual Investor/Buyer","interested_locations" => "United Arab Emirates, Malaysia","investment_min" => "100000","investment_max" =>"1000000",
-            "currency" => "AED","company_name" => "NFT DUBAI", "designation" => "Project Manager","buiness_factors" => "Technological Development",
-            "company_description" =>"NFT Transaction in dubai first time","user_id" => "101","created_at" => null , "updated_at" => null],
+            "currency" => "AED","Avg_monthly_sales" => "NFT DUBAI", "year_sales" => "","EBITDA" => "assets", "Phisycal_assets_value" => "", "receiving_quotations" => "", "plan" => "",
+            "user_id" => "101","created_at" => null , "updated_at" => null],
 
         ];
 

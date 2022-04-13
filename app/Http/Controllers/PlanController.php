@@ -4,31 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use Illuminate\Http\Request;
-
 class PlanController extends Controller
 {
-    
+
     public function index()
     {
-        $plans = Currency::all();
+        $plans = Plan::all();
 
         return view('plans.index', compact('plans'));
     }
- 
+
     public function create()
     {
         return view('plans.create');
 
     }
 
-   
+
     public function store(Request $request)
     {
         $request->validate([
-         
+
         ]);
 
-       
+
         return redirect()->route('plans.index')
                         ->with('success','item created successfully.');
     }
@@ -45,21 +44,21 @@ class PlanController extends Controller
 
     }
 
- 
+
     public function edit(Plan $plan)
     {
         return view('plans.edit', compact('plan'));
 
     }
- 
+
     public function update(Request $request, Plan $plan)
     {
-        $currency->update($request->all());
+        $plan->update($request->all());
 
         return back()->with('message', 'item updated successfully');
     }
 
-   
+
     public function destroy(Plan $plan)
     {
         $plan->delete();
@@ -70,4 +69,3 @@ class PlanController extends Controller
 
 
 
- 

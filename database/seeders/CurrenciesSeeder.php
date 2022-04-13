@@ -17,7 +17,7 @@ class CurrenciesSeeder extends Seeder
     {
         //
         $data = [
-            ["id"=> "1", "name"=> "United Arab Emirates dirham", "short_name" => "AED", "api_id"=>"د.إ","created_at" => null , "updated_at" => null],
+            ["id"=> "1", "type"=> "United Arab Emirates dirham", "activation" => "AED", "status"=>"د.إ","created_at" => null , "updated_at" => null],
             ["id"=> "2", "name"=> "Dollars", "short_name" => "USD", "api_id"=>"$","created_at" => null , "updated_at" => null],
             ["id"=> "3", "name"=> "Riyals", "short_name" => "SAR", "api_id"=>"﷼","created_at" => null , "updated_at" => null],
             ["id"=> "4", "name"=> "Pounds", "short_name" => "GBP", "api_id"=>"£","created_at" => null , "updated_at" => null],

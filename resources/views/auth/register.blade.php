@@ -69,6 +69,10 @@
 {{--        </form>--}}
 {{--    </x-jet-authentication-card>--}}
 {{--</x-guest-layout>--}}
+
+
+
+
 <div class="signup-main">
     <div class="container-fluid">
         <div class="sign-up">

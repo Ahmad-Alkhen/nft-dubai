@@ -163,9 +163,22 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+<<<<<<< HEAD
+=======
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
+
+        Spatie\Permission\PermissionServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
+
+>>>>>>> f95d1f4231085134371eabaa6ca63aedf743bcb8
         /*
          * Package Service Providers...
          */
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class, // If using Jetstream
 
         /*
          * Application Service Providers...
@@ -190,6 +203,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ])->toArray(),
+    'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
 ];

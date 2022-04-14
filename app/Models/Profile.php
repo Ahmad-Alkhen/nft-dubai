@@ -12,45 +12,56 @@ class Profile extends Model
     use HasFactory;
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
-    public function bookmark()
-    {
-        return $this->hasMany('App\Bookmark');
-    }
-    
-    public function file()
-    {
-        return $this->hasMany('App\File');
-    }
-    public function industryProfile()
-    {
-        return $this->hasMany('App\industryProfile');
-    }
-    public function profileplan()
-    {
-        return $this->hasMany('App\ProfilePlan');
-    }
-
-    
+      
     public function advisor()
     {
-        return $this->hasOne('App\Advisor');
+        return $this->hasOne(Advisor::class);
     }
 
     public function business()
     {
-        return $this->hasOne('App\Business');
+        return $this->hasOne(Business::class);
     }
+    
     public function franshise()
     {
-        return $this->hasOne('App\Franshise');
+        return $this->hasOne(Franshise::class);
     }
     public function investor()
     {
-        return $this->hasOne('App\Investor');
+        return $this->hasOne(Investor::class);
     }
+   
+
+    public function socialmedia()
+    {
+        return $this->hasOne(SocialMedia::class);
+    }
+   
+
+    public function bookmark()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+    
+    public function files()
+    {
+        return $this->hasMany(File::class );
+    }
+    public function industryProfiles()
+    {
+        return $this->hasMany(IndustryProfile::class);
+
+    }
+    public function profilePlans()
+    {
+        return $this->hasMany(ProfilePlan::class);
+    }
+
+  
    
 
 //   public function products()

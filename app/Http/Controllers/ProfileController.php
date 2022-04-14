@@ -15,6 +15,7 @@ class ProfileController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -36,6 +37,7 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -47,6 +49,7 @@ class ProfileController extends Controller
     public function show(Profile $profile)
     {
         //
+
     }
 
     /**
@@ -58,6 +61,7 @@ class ProfileController extends Controller
     public function edit(Profile $profile)
     {
         //
+        return view('profile.edit', compact('profile'));
     }
 
     /**
@@ -70,6 +74,7 @@ class ProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         //
+
     }
 
     /**
@@ -81,5 +86,18 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         //
+        $profile->delete();
+
+        return back()->with('message', 'Profile deleted successfully');
+    }
+
+    public function profileActivation()
+    {
+
+    }
+
+    public function profileStatus()
+    {
+
     }
 }

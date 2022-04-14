@@ -22,14 +22,15 @@ return new class extends Migration
             $table->string('interests')->nullable();
             $table->string('investor_role')->nullable();
             $table->string('interested_locations')->nullable();
-
             $table->integer('investment_min')->nullable();
             $table->integer('investment_max')->nullable();
             $table->text('currency')->nullable();
             $table->string('company_name')->nullable();
             $table->string('designation')->nullable();
-            $table->text('buiness_factors')->nullable();
+            $table->text('business_factors')->nullable();
             $table->text('company_description')->nullable();
+            // $table->string('indsutries')->nullable();
+
             $table->timestamps();
 
 

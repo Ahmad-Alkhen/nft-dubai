@@ -45,13 +45,13 @@ Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback
 
 
 //  ************* Busnisses ***************
- 
+
 
 Route::get('businesses/create', [BusinessController::class, 'create']);
 Route::post('businesses/store', [BusinessController::class, 'store']);
 
 //  ************* Currencies ***************
- 
+
 
 Route::get('currencies/create', [CurrencyController::class, 'create']);
 Route::post('currencies/store', [CurrencyController::class, 'store']);

@@ -166,7 +166,6 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 
 
-        Barryvdh\Debugbar\ServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
